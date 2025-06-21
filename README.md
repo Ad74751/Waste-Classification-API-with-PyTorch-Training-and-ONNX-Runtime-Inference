@@ -50,7 +50,27 @@ This project provides a complete pipeline for training a waste classification CN
    - Make sure `onnxruntime.dll` is in your PATH or next to your executable.
 3. Use `ONNX_MODEL_INFER_Init`, `ONNX_MODEL_INFER_Predict`, and `ONNX_MODEL_INFER_Cleanup` from your C/C++ code to run inference.
 
+### 3. GoLang HTTP API (main.go)
+
+1. Install [Go](https://golang.org/dl/) (version 1.18+ recommended).
+2. Install dependencies:
+   ```sh
+   go get github.com/gofiber/fiber/v2
+   go get github.com/gofiber/fiber/v2/middleware/cors
+   ```
+3. Make sure `onnx_model_infer_win64_model.dll` and `model.onnx` are present in the project root.
+4. Build and run the server:
+   ```sh
+   go run main.go
+   # or to build an executable:
+   go build -o waste-api.exe main.go
+   ./waste-api.exe
+   ```
+5. The API will be available at `http://localhost:3000`.
+   - Health check: `GET /health`
+   - Prediction: `POST /predict` with form-data key `image` (JPEG/PNG)
 
 
-### 3. Dataset
+
+### 4. Dataset
 - The image data is source from:  https://www.kaggle.com/datasets/joebeachcapital/realwaste
