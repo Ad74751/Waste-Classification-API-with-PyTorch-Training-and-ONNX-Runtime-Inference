@@ -1,0 +1,6 @@
+cnn/venv
+onnxruntime/
+.vscode/
+*.xml
+*.pyc
+*.md
